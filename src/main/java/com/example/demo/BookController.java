@@ -30,6 +30,15 @@ public class BookController {
     return "success";
   }
   
+  @GetMapping("/findByAuthor")
+  @ResponseBody
+  @CrossOrigin(origins = "*")
+  public List<Book> findByAuthor(@RequestParam String author) {
+  	Iterable<Book> books = this.bookRepository.findByAuthor(author);
+    List<Book> bookList = new ArrayList<>();
+    books.forEach(bookList::add);
+    return bookList;
+  }
   
 
   @GetMapping("/findAllBooks")
