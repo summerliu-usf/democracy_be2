@@ -12,7 +12,7 @@ public class ChapterController {
     @Autowired
     private ChapterRepository chapterRepository;
 
-    @GetMapping("/{bookId}/chapters/{chapId}")
+    @GetMapping("/{bookId}/{chapId}")
     public Chapter getChapterById(@PathVariable int chapId) {
         return chapterRepository.findById(chapId).orElse(null);
     }
@@ -27,7 +27,7 @@ public class ChapterController {
 //        return chapterRepository.findPodcastUrlByChapId(chapId);
 //    }
 
-    @PostMapping
+    @PostMapping("/save")
     public Chapter saveChapter(@RequestBody Chapter chapter) {
         return chapterRepository.save(chapter);
     }
